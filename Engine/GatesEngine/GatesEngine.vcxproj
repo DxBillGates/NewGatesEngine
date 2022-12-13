@@ -19,9 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\GameFramework\Component\Behaviour.h" />
+    <ClInclude Include="Header\GameFramework\Component\Component.h" />
+    <ClInclude Include="Header\GameFramework\Component\DefineComponentManager.h" />
+    <ClInclude Include="Header\GameFramework\Component\EngineDefineComponentManager.h" />
+    <ClInclude Include="Header\GameFramework\Component\SampleBehaviour.h" />
+    <ClInclude Include="Header\GameFramework\Component\SampleComponent.h" />
+    <ClInclude Include="Header\GameFramework\GameObject\GameObject.h" />
+    <ClInclude Include="Header\GameFramework\GameObject\GameObjectManager.h" />
     <ClInclude Include="Header\Util\Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GameFramework\Component\Component.cpp" />
+    <ClCompile Include="Source\GameFramework\Component\EngineDefineComponentManager.cpp" />
+    <ClCompile Include="Source\GameFramework\Component\SampleBehaviour.cpp" />
+    <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp" />
+    <ClCompile Include="Source\GameFramework\GameObject\GameObject.cpp" />
+    <ClCompile Include="Source\GameFramework\GameObject\GameObjectManager.cpp" />
     <ClCompile Include="Source\Util\Utility.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

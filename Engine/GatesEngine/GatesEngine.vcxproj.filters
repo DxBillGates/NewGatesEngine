@@ -43,15 +43,69 @@
     <Filter Include="Source\Util">
       <UniqueIdentifier>{46433ec9-7fea-4d95-a91d-40022d33af41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header\GameFramework\Component">
+      <UniqueIdentifier>{e2d9b113-ca49-43e3-8cde-afb677f440e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\GameFramework\GameObject">
+      <UniqueIdentifier>{dbd0e37e-3a87-4871-8f3e-50989f089fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameFramework\Component">
+      <UniqueIdentifier>{f2cc2a0c-b91c-4793-8528-613db9d7c121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameFramework\GameObject">
+      <UniqueIdentifier>{1f8e68a3-ce11-4171-9ee4-711ed8e0ed50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Util\Utility.h">
       <Filter>Header\Util</Filter>
     </ClInclude>
+    <ClInclude Include="Header\GameFramework\GameObject\GameObject.h">
+      <Filter>Header\GameFramework\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\GameObject\GameObjectManager.h">
+      <Filter>Header\GameFramework\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Component\Component.h">
+      <Filter>Header\GameFramework\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Component\Behaviour.h">
+      <Filter>Header\GameFramework\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Component\DefineComponentManager.h">
+      <Filter>Header\GameFramework\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Component\EngineDefineComponentManager.h">
+      <Filter>Header\GameFramework\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Component\SampleComponent.h">
+      <Filter>Header\GameFramework\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Component\SampleBehaviour.h">
+      <Filter>Header\GameFramework\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Util\Utility.cpp">
       <Filter>Source\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\GameObject\GameObject.cpp">
+      <Filter>Source\GameFramework\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\GameObject\GameObjectManager.cpp">
+      <Filter>Source\GameFramework\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\Component\Component.cpp">
+      <Filter>Source\GameFramework\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\Component\EngineDefineComponentManager.cpp">
+      <Filter>Source\GameFramework\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp">
+      <Filter>Source\GameFramework\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\Component\SampleBehaviour.cpp">
+      <Filter>Source\GameFramework\Component</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
