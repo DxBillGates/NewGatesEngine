@@ -55,6 +55,12 @@
     <Filter Include="Source\GameFramework\GameObject">
       <UniqueIdentifier>{1f8e68a3-ce11-4171-9ee4-711ed8e0ed50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\GameFramework\Component\Sample">
+      <UniqueIdentifier>{71e91aee-8dcb-4f40-8e1b-982c9cc85e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\GameFramework\Component\Sample">
+      <UniqueIdentifier>{41c05dc4-a1c5-4fc6-a0ea-f32c90d6f4c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Util\Utility.h">
@@ -78,11 +84,11 @@
     <ClInclude Include="Header\GameFramework\Component\EngineDefineComponentManager.h">
       <Filter>Header\GameFramework\Component</Filter>
     </ClInclude>
-    <ClInclude Include="Header\GameFramework\Component\SampleComponent.h">
-      <Filter>Header\GameFramework\Component</Filter>
-    </ClInclude>
     <ClInclude Include="Header\GameFramework\Component\SampleBehaviour.h">
-      <Filter>Header\GameFramework\Component</Filter>
+      <Filter>Header\GameFramework\Component\Sample</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Component\SampleComponent.h">
+      <Filter>Header\GameFramework\Component\Sample</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -101,11 +107,11 @@
     <ClCompile Include="Source\GameFramework\Component\EngineDefineComponentManager.cpp">
       <Filter>Source\GameFramework\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp">
-      <Filter>Source\GameFramework\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GameFramework\Component\SampleBehaviour.cpp">
-      <Filter>Source\GameFramework\Component</Filter>
+      <Filter>Source\GameFramework\Component\Sample</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp">
+      <Filter>Source\GameFramework\Component\Sample</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
