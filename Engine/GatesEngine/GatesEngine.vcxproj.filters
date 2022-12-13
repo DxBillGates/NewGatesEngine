@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header">
+      <UniqueIdentifier>{7dbf6a04-6c34-46fa-9a96-cb8eacb27e34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{c2b783d2-efa1-45f0-93d6-74b163f416df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\GameFramework">
+      <UniqueIdentifier>{b8de8a5b-dd0c-4095-b92f-b48b2187581b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Graphics">
+      <UniqueIdentifier>{ad3ee299-f454-4bec-8e13-b0b524e72853}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Audio">
+      <UniqueIdentifier>{c8f71d65-9f49-441e-b96a-e1d36682f202}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Input">
+      <UniqueIdentifier>{eab670e9-d0be-44c7-8d24-12543a428981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Util">
+      <UniqueIdentifier>{12e970b9-84d9-4dd7-935f-14c3d227ad83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header\Application">
+      <UniqueIdentifier>{975476c1-ba8b-4270-a6be-d633b0fe2ee3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameFramework">
+      <UniqueIdentifier>{5dbc7f38-582e-4e8f-b1db-8f73d2ee3797}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Graphics">
+      <UniqueIdentifier>{a100a2fc-19d1-422b-bedf-032299561d76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Audio">
+      <UniqueIdentifier>{c440c353-343b-4563-a95a-4f5510d1ae7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Input">
+      <UniqueIdentifier>{a09f2b99-752d-4afb-a8ac-c09f23b1c31f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Application">
+      <UniqueIdentifier>{4d11f289-4b36-441e-8ddf-a475aa503713}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Util">
+      <UniqueIdentifier>{46433ec9-7fea-4d95-a91d-40022d33af41}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header\Util\Utility.h">
+      <Filter>Header\Util</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Util\Utility.cpp">
+      <Filter>Source\Util</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
