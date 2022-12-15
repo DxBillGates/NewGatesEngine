@@ -4,9 +4,10 @@
 GE::DefineComponentManager* GE::GameObject::engineDefineComponentManager = nullptr;
 GE::DefineComponentManager* GE::GameObject::userDefineComponentManager = nullptr;
 
-GE::GameObject::GameObject()
-	: name("GameObject")
-	, tag("none")
+GE::GameObject::GameObject(const std::string& name, const std::string& tag)
+	: gameObjectManager(nullptr)
+	, name(name)
+	, tag(tag)
 	, isEnable(false)
 	, isDestroy(false)
 {
@@ -52,12 +53,87 @@ void GE::GameObject::Update(float deltaTime)
 {
 	for (auto& component : components)
 	{
+		if (component->IsEnabled() == false)continue;
 		component->Update(deltaTime);
 	}
 	for (auto& behaviour : scriptComponents)
 	{
+		if (behaviour->IsEnabled() == false)continue;
 		behaviour->Update(deltaTime);
 	}
+}
+
+void GE::GameObject::Draw()
+{
+	for (auto& component : components)
+	{
+		if (component->IsEnabled() == false)continue;
+		component->Draw();
+	}
+	for (auto& behaviour : scriptComponents)
+	{
+		if (behaviour->IsEnabled() == false)continue;
+		behaviour->Draw();
+	}
+}
+
+void GE::GameObject::LateDraw()
+{
+	for (auto& component : components)
+	{
+		if (component->IsEnabled() == false)continue;
+		component->LateDraw();
+	}
+	for (auto& behaviour : scriptComponents)
+	{
+		if (behaviour->IsEnabled() == false)continue;
+		behaviour->LateDraw();
+	}
+}
+
+void GE::GameObject::OnCollision(GameObject* other, bool enter, bool stay, bool exit)
+{
+	for (auto& behaviour : scriptComponents)
+	{
+		if (enter)behaviour->OnCollisionEnter(other);
+		if (stay)behaviour->OnCollisionStay(other);
+		if (exit)behaviour->OnCollisionExit(other);
+	}
+}
+
+GE::IGameObjectManager* GE::GameObject::GetManager()
+{
+	return gameObjectManager;
+}
+
+const std::string& GE::GameObject::GetName()
+{
+	return name;
+}
+
+const std::string& GE::GameObject::GetTag()
+{
+	return tag;
+}
+
+void GE::GameObject::SetManager(IGameObjectManager* manager)
+{
+	gameObjectManager = manager;
+}
+
+void GE::GameObject::SetName(const std::string& setName)
+{
+	name = setName;
+}
+
+void GE::GameObject::SetTag(const std::string& setTag)
+{
+	tag = setTag;
+}
+
+void GE::GameObject::SetEnabled(bool flag)
+{
+	isEnable = flag;
 }
 
 GE::Component* GE::GameObject::AddComponent(const std::string& componentName)
@@ -86,9 +162,44 @@ GE::Component* GE::GameObject::AddComponent(const std::string& componentName)
 	return component;
 }
 
+void GE::GameObject::OnDestroy()
+{
+	for (auto& component : components)
+	{
+		component->OnDestroy();
+	}
+	for (auto& behaviour : scriptComponents)
+	{
+		behaviour->OnDestroy();
+	}
+}
+
+void GE::GameObject::OnSerialize()
+{
+	for (auto& component : components)
+	{
+		component->OnSerialize();
+	}
+	for (auto& behaviour : scriptComponents)
+	{
+		behaviour->OnSerialize();
+	}
+}
+
+bool GE::GameObject::IsEnabled()
+{
+	return isEnable;
+}
+
+bool GE::GameObject::IsDestroy()
+{
+	return isDestroy;
+}
+
 void GE::GameObject::Destroy()
 {
 	isDestroy = true;
+	gameObjectManager->DestroyGameObject(this);
 }
 
 void GE::GameObject::SetDefineComponentManager(DefineComponentManager* engineDefine, DefineComponentManager* userDefine)

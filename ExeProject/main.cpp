@@ -14,5 +14,6 @@ int main()
 	gameObject.AddComponent("SampleComponent");
 	gameObject.AddComponent("SampleBehaviour");
 	gameObject.Update(1);
+
 	return 0;
 }

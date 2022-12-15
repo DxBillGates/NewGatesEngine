@@ -90,6 +90,9 @@
     <ClInclude Include="Header\GameFramework\Component\SampleComponent.h">
       <Filter>Header\GameFramework\Component\Sample</Filter>
     </ClInclude>
+    <ClInclude Include="Header\GameFramework\GameObject\IGameObjectManager.h">
+      <Filter>Header\GameFramework\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Util\Utility.cpp">
