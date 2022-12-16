@@ -42,6 +42,7 @@ GE::GameObjectManager::GameObjectManager()
 
 GE::GameObjectManager::~GameObjectManager()
 {
+	DestroyGameObjects();
 }
 
 void GE::GameObjectManager::Awake()

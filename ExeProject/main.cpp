@@ -3,6 +3,7 @@
 #include <GatesEngine/Header/GameFramework/Component/SampleComponent.h>
 #include <GatesEngine/Header/GameFramework/Component/SampleBehaviour.h>
 #include <GatesEngine/Header/GameFramework/GameObject/GameObject.h>
+#include <GatesEngine/Header/GameFramework/GameObject/GameObjectManager.h>
 
 #include "UserDefineComponentManager.h"
 
@@ -15,10 +16,12 @@ int main()
 	userDefineComponentManager->Initialize();
 
 	GE::GameObject::SetDefineComponentManager(engineDifineComponentManager, userDefineComponentManager);
-	GE::GameObject gameObject;
-	gameObject.AddComponent("SampleComponent");
-	gameObject.AddComponent("SampleBehaviour");
-	gameObject.Update(1);
+
+	GE::GameObjectManager gameObjectManager;
+	auto gameObject = gameObjectManager.AddGameObject(new GE::GameObject());
+	gameObject->AddComponent("SampleComponent");
+	gameObject->AddComponent("SampleBehaviour");
+	gameObject->Update(1);
 
 	return 0;
 }
