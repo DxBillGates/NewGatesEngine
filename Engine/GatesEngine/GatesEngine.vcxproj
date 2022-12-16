@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\GameFramework\Component\Component.cpp" />
+    <ClCompile Include="Source\GameFramework\Component\DefineComponentManager.cpp" />
     <ClCompile Include="Source\GameFramework\Component\EngineDefineComponentManager.cpp" />
     <ClCompile Include="Source\GameFramework\Component\SampleBehaviour.cpp" />
     <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp" />

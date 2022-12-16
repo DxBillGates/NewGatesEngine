@@ -116,5 +116,8 @@
     <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp">
       <Filter>Source\GameFramework\Component\Sample</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GameFramework\Component\DefineComponentManager.cpp">
+      <Filter>Source\GameFramework\Component</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
