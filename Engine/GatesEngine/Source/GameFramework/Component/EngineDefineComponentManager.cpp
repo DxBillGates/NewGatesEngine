@@ -17,14 +17,3 @@ void GE::EngineDefineComponentManager::Initialize()
 	registerComponents["SampleComponent"] = [](){return new SampleComponent();};
 	registerComponents["SampleBehaviour"] = [](){return new SampleBehaviour();};
 }
-
-GE::Component* GE::EngineDefineComponentManager::GetComponent(const std::string& componentName)
-{
-	for (auto& component : registerComponents)
-	{
-		if (componentName != component.first)continue;
-
-		return component.second();
-	}
-	return nullptr;
-}

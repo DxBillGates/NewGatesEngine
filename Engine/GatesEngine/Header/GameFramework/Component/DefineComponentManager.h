@@ -15,6 +15,6 @@ namespace GE
 		// 定義されているコンポーネントをクラスに登録
 		virtual void Initialize() {}
 		// 登録されているコンポーネントのインスタンスを返す
-		virtual Component* GetComponent(const std::string& componentName) { return nullptr; }
+		Component* GetComponent(const std::string& componentName);
 	};
 }

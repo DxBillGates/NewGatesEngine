@@ -8,7 +8,6 @@ namespace GE
 	public:
 		static DefineComponentManager* GetInstance();
 		void Initialize() override;
-		Component* GetComponent(const std::string& componentName) override;
 	private:
 		EngineDefineComponentManager();
 		EngineDefineComponentManager(const EngineDefineComponentManager&) = delete;
