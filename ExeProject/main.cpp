@@ -1,4 +1,5 @@
 #include <GatesEngine/Header/Util/Utility.h>
+#include <GatesEngine/Header/IO/DirectoryFileLoader.h>
 
 int main()
 {
