@@ -116,6 +116,11 @@ const std::string& GE::GameObject::GetTag()
 	return tag;
 }
 
+const std::string& GE::GameObject::GetLayer()
+{
+	return layer;
+}
+
 void GE::GameObject::SetManager(IGameObjectManager* manager)
 {
 	gameObjectManager = manager;
@@ -129,6 +134,11 @@ void GE::GameObject::SetName(const std::string& setName)
 void GE::GameObject::SetTag(const std::string& setTag)
 {
 	tag = setTag;
+}
+
+void GE::GameObject::SetLayer(const std::string& setLayer)
+{
+	layer = setLayer;
 }
 
 void GE::GameObject::SetEnabled(bool flag)

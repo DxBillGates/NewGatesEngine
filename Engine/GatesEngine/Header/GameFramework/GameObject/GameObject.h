@@ -15,6 +15,7 @@ namespace GE
 
 		std::string name;
 		std::string tag;
+		std::string layer;
 		bool isEnable;
 		bool isDestroy;
 		std::vector<Component*> components;
@@ -40,10 +41,12 @@ namespace GE
 		IGameObjectManager* GetManager();
 		const std::string& GetName();
 		const std::string& GetTag();
+		const std::string& GetLayer();
 
 		void SetManager(IGameObjectManager* manager);
 		void SetName(const std::string& setName);
 		void SetTag(const std::string& setTag);
+		void SetLayer(const std::string& setLayer);
 		void SetEnabled(bool flag);
 
 		// 保持しているコンポーネントからT型と一致するコンポーネントを返す
