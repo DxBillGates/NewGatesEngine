@@ -28,6 +28,16 @@
     <ClInclude Include="Header\GameFramework\GameObject\GameObject.h" />
     <ClInclude Include="Header\GameFramework\GameObject\GameObjectManager.h" />
     <ClInclude Include="Header\GameFramework\GameObject\IGameObjectManager.h" />
+    <ClInclude Include="Header\Util\Math\Axis.h" />
+    <ClInclude Include="Header\Util\Math\Easing.h" />
+    <ClInclude Include="Header\Util\Math\Math.h" />
+    <ClInclude Include="Header\Util\Math\Matrix4.h" />
+    <ClInclude Include="Header\Util\Math\Quaternion.h" />
+    <ClInclude Include="Header\Util\Math\Vector2.h" />
+    <ClInclude Include="Header\Util\Math\Vector3.h" />
+    <ClInclude Include="Header\Util\Math\Vector4.h" />
+    <ClInclude Include="Header\Util\Random.h" />
+    <ClInclude Include="Header\Util\Timer.h" />
     <ClInclude Include="Header\Util\Utility.h" />
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +48,15 @@
     <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp" />
     <ClCompile Include="Source\GameFramework\GameObject\GameObject.cpp" />
     <ClCompile Include="Source\GameFramework\GameObject\GameObjectManager.cpp" />
+    <ClCompile Include="Source\Util\Math\Easing.cpp" />
+    <ClCompile Include="Source\Util\Math\Math.cpp" />
+    <ClCompile Include="Source\Util\Math\Matrix4.cpp" />
+    <ClCompile Include="Source\Util\Math\Quaternion.cpp" />
+    <ClCompile Include="Source\Util\Math\Vector2.cpp" />
+    <ClCompile Include="Source\Util\Math\Vector3.cpp" />
+    <ClCompile Include="Source\Util\Math\Vector4.cpp" />
+    <ClCompile Include="Source\Util\Random.cpp" />
+    <ClCompile Include="Source\Util\Timer.cpp" />
     <ClCompile Include="Source\Util\Utility.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
