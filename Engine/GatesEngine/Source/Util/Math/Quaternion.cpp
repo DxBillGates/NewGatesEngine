@@ -55,27 +55,32 @@ GE::Math::Quaternion::Quaternion(const Matrix4x4& m)
 	w = qa[3];
 }
 
-GE::Math::Quaternion GE::Math::Quaternion::Normalize()
+GE::Math::Quaternion GE::Math::Quaternion::Conjugate()const
+{
+	return Quaternion::Conjugate(*this);
+}
+
+GE::Math::Quaternion GE::Math::Quaternion::Normalize()const
 {
 	return Quaternion::Normalize(*this);
 }
 
-float GE::Math::Quaternion::Length()
+float GE::Math::Quaternion::Length()const
 {
 	return Quaternion::Length(*this);
 }
 
-GE::Math::Vector3 GE::Math::Quaternion::GetAxis()
+GE::Math::Vector3 GE::Math::Quaternion::GetAxis()const
 {
 	return Quaternion::GetAxis(*this);
 }
 
-GE::Math::Matrix4x4 GE::Math::Quaternion::Rotation()
+GE::Math::Matrix4x4 GE::Math::Quaternion::Rotation()const
 {
 	return Quaternion::Rotation(*this);
 }
 
-GE::Math::Vector3 GE::Math::Quaternion::EulerRadian()
+GE::Math::Vector3 GE::Math::Quaternion::EulerRadian()const
 {
 	Matrix4x4 matrix = this->Rotation();
 	Vector3 angle;
@@ -106,7 +111,7 @@ GE::Math::Vector3 GE::Math::Quaternion::EulerRadian()
 	return angle;
 }
 
-GE::Math::Vector3 GE::Math::Quaternion::EulerAngle()
+GE::Math::Vector3 GE::Math::Quaternion::EulerAngle()const
 {
 	Vector3 angle = EulerRadian();
 	angle *= Math::TO_RADIAN;
@@ -254,6 +259,13 @@ GE::Math::Quaternion GE::Math::Quaternion::LookDirection(GE::Math::Vector3 direc
 	GE::Math::Vector3 cross = GE::Math::Vector3::Cross(forward, dir).Normalize();
 	GE::Math::Quaternion result = { cross,theta };
 	return result;
+}
+
+GE::Math::Vector3 GE::Math::Quaternion::Transform(const Quaternion& q, const Vector3& v)
+{
+	Quaternion vQuaternion = Quaternion(v.x, v.y, v.z, 0);
+	Quaternion result = q * vQuaternion * q.Conjugate();
+	return Vector3(result.x,result.y,result.z);
 }
 
 GE::Math::Quaternion GE::Math::Quaternion::operator-()const

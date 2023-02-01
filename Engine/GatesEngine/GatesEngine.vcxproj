@@ -33,6 +33,7 @@
     <ClInclude Include="Header\Util\Math\Math.h" />
     <ClInclude Include="Header\Util\Math\Matrix4.h" />
     <ClInclude Include="Header\Util\Math\Quaternion.h" />
+    <ClInclude Include="Header\Util\Math\Transform.h" />
     <ClInclude Include="Header\Util\Math\Vector2.h" />
     <ClInclude Include="Header\Util\Math\Vector3.h" />
     <ClInclude Include="Header\Util\Math\Vector4.h" />
@@ -52,6 +53,7 @@
     <ClCompile Include="Source\Util\Math\Math.cpp" />
     <ClCompile Include="Source\Util\Math\Matrix4.cpp" />
     <ClCompile Include="Source\Util\Math\Quaternion.cpp" />
+    <ClCompile Include="Source\Util\Math\Transform.cpp" />
     <ClCompile Include="Source\Util\Math\Vector2.cpp" />
     <ClCompile Include="Source\Util\Math\Vector3.cpp" />
     <ClCompile Include="Source\Util\Math\Vector4.cpp" />

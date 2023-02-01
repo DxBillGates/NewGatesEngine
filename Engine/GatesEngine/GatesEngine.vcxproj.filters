@@ -129,6 +129,9 @@
     <ClInclude Include="Header\Util\Timer.h">
       <Filter>Header\Util\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Header\Util\Math\Transform.h">
+      <Filter>Header\Util\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Util\Utility.cpp">
@@ -181,6 +184,9 @@
     </ClCompile>
     <ClCompile Include="Source\Util\Timer.cpp">
       <Filter>Source\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Util\Math\Transform.cpp">
+      <Filter>Source\Util\Math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

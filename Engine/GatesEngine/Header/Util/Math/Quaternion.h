@@ -26,35 +26,40 @@ namespace GE
 			Quaternion(const Matrix4x4& m);
 
 			/// <summary>
+			/// クォータニオンの共役を返す
+			/// </summary>
+			/// <returns>クォータニオンの共役</returns>
+			Quaternion Conjugate()const;
+			/// <summary>
 			/// 正規化
 			/// </summary>
 			/// <returns>正規化した結果</returns>
-			Quaternion Normalize();
+			Quaternion Normalize()const;
 			/// <summary>
 			/// 大きさを取得
 			/// </summary>
 			/// <returns>大きさを取得</returns>
-			float Length();
+			float Length()const;
 			/// <summary>
 			/// 回転軸を取得
 			/// </summary>
 			/// <returns>回転軸</returns>
-			Vector3 GetAxis();
+			Vector3 GetAxis()const;
 			/// <summary>
 			/// セットされてるクォータニオンから回転行列を作成する
 			/// </summary>
 			/// <returns>回転行列</returns>
-			Matrix4x4 Rotation();
+			Matrix4x4 Rotation()const;
 			/// <summary>
 			/// クォータニオンからオイラー角に変換する
 			/// </summary>
 			/// <returns>オイラー角(ラジアン)</returns>
-			Vector3 EulerRadian();
+			Vector3 EulerRadian()const;
 			/// <summary>
 			/// クォータニオンからオイラー角に変換する
 			/// </summary>
 			/// <returns>オイラー角(度数法)</returns>
-			Vector3 EulerAngle();
+			Vector3 EulerAngle()const;
 
 			/// <summary>
 			/// 共役を生成する関数
@@ -121,6 +126,13 @@ namespace GE
 			/// <param name="Vector3">向いてる方向のベクトル</param>
 			/// <returns></returns>
 			static Quaternion LookDirection(GE::Math::Vector3 direction);
+			/// <summary>
+			/// ベクトルを回転させる
+			/// </summary>
+			/// <param name="q">回転させるためのクォータニオン</param>
+			/// <param name="v">回転させるベクトル</param>
+			/// <returns>回転後のベクトル</returns>
+			static Vector3 Transform(const Quaternion& q, const Vector3& v);
 
 			Quaternion operator-()const;
 

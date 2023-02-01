@@ -4,6 +4,8 @@
 #include <GatesEngine/Header/GameFramework/Component/SampleBehaviour.h>
 #include <GatesEngine/Header/GameFramework/GameObject/GameObject.h>
 #include <GatesEngine/Header/GameFramework/GameObject/GameObjectManager.h>
+#include <GatesEngine/Header/Util/Math/Transform.h>
+#include <GatesEngine/Header/Util/Timer.h>
 
 #include "UserDefineComponentManager.h"
 
@@ -22,6 +24,11 @@ int main()
 	gameObject->AddComponent("SampleComponent");
 	gameObject->AddComponent("SampleBehaviour");
 	gameObject->Update(1);
+
+	GE::Math::Transform testTransform;
+	auto axis = testTransform.GetAxis();
+	testTransform.rotation = GE::Math::Quaternion::Euler(GE::Math::Vector3(90,0,0));
+	axis = testTransform.GetAxis();
 
 	return 0;
 }
