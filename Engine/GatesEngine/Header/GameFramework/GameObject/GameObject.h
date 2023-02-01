@@ -3,6 +3,7 @@
 #include "..\Component\Behaviour.h"
 #include "..\Component\DefineComponentManager.h"
 #include "IGameObjectManager.h"
+#include "..\..\Util\Math\Transform.h"
 #include <vector>
 
 namespace GE
@@ -18,6 +19,8 @@ namespace GE
 		std::string layer;
 		bool isEnable;
 		bool isDestroy;
+		Math::Transform transform;
+
 		std::vector<Component*> components;
 		std::vector<Behaviour*> scriptComponents;
 
@@ -37,6 +40,7 @@ namespace GE
 
 		bool IsEnabled();
 		bool IsDestroy();
+		Math::Transform* GetTransform();
 
 		IGameObjectManager* GetManager();
 		const std::string& GetName();

@@ -206,6 +206,11 @@ bool GE::GameObject::IsDestroy()
 	return isDestroy;
 }
 
+GE::Math::Transform* GE::GameObject::GetTransform()
+{
+	return &transform;
+}
+
 void GE::GameObject::Destroy()
 {
 	isDestroy = true;

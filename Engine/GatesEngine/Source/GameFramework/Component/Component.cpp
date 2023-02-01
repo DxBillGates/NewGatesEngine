@@ -1,4 +1,5 @@
 #include "..\..\..\Header\GameFramework\Component\Component.h"
+#include "..\..\..\Header\GameFramework\GameObject\GameObject.h"
 
 GE::Component::Component()
 	: name("Component")
@@ -20,4 +21,5 @@ bool GE::Component::IsEnabled()
 void GE::Component::SetGameObject(GameObject* setObject)
 {
 	gameObject = setObject;
+	transform = gameObject->GetTransform();
 }

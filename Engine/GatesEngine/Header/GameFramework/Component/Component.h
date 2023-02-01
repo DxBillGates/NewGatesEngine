@@ -1,4 +1,5 @@
 #pragma once
+#include "..\..\Util\Math\Transform.h"
 #include <string>
 
 namespace GE
@@ -13,6 +14,7 @@ namespace GE
 		std::string name;
 		GameObject* gameObject;
 		bool isEnable;
+		Math::Transform* transform;
 	public:
 		Component();
 		virtual ~Component() {}
