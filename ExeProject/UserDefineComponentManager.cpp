@@ -4,7 +4,7 @@ UserDefineComponentManager::UserDefineComponentManager()
 {
 }
 
-GE::DefineComponentManager* UserDefineComponentManager::GetInstance()
+GE::GameFramework::DefineComponentManager* UserDefineComponentManager::GetInstance()
 {
 	static UserDefineComponentManager instance;
 	return &instance;

@@ -1,6 +1,6 @@
 #include "..\..\..\Header\GameFramework\Component\DefineComponentManager.h"
 
-GE::Component* GE::DefineComponentManager::GetComponent(const std::string& componentName)
+GE::GameFramework::Component* GE::GameFramework::DefineComponentManager::GetComponent(const std::string& componentName)
 {
 	for (auto& component : registerComponents)
 	{

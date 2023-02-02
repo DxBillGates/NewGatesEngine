@@ -1,7 +1,7 @@
 #pragma once
 #include <GatesEngine/Header/GameFramework/Component/DefineComponentManager.h>
 
-class UserDefineComponentManager : public GE::DefineComponentManager
+class UserDefineComponentManager : public GE::GameFramework::DefineComponentManager
 {
 public:
 	static DefineComponentManager* GetInstance();

@@ -1,29 +1,29 @@
 #include "..\..\..\Header\GameFramework\Component\SampleComponent.h"
 
-GE::SampleComponent::SampleComponent()
+GE::GameFramework::SampleComponent::SampleComponent()
 {
 }
 
-GE::SampleComponent::~SampleComponent()
+GE::GameFramework::SampleComponent::~SampleComponent()
 {
 }
 
-void GE::SampleComponent::Awake()
+void GE::GameFramework::SampleComponent::Awake()
 {
 }
 
-void GE::SampleComponent::Start()
+void GE::GameFramework::SampleComponent::Start()
 {
 }
 
-void GE::SampleComponent::Update(float deltaTime)
+void GE::GameFramework::SampleComponent::Update(float deltaTime)
 {
 }
 
-void GE::SampleComponent::OnDestroy()
+void GE::GameFramework::SampleComponent::OnDestroy()
 {
 }
 
-void GE::SampleComponent::OnGUI()
+void GE::GameFramework::SampleComponent::OnGUI()
 {
 }

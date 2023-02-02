@@ -12,15 +12,15 @@
 int main()
 {
 	GE::Utility::Printf("test\n");
-	GE::DefineComponentManager* engineDifineComponentManager = GE::EngineDefineComponentManager::GetInstance();
-	GE::DefineComponentManager* userDefineComponentManager = UserDefineComponentManager::GetInstance();
+	GE::GameFramework::DefineComponentManager* engineDifineComponentManager = GE::GameFramework::EngineDefineComponentManager::GetInstance();
+	GE::GameFramework::DefineComponentManager* userDefineComponentManager = UserDefineComponentManager::GetInstance();
 	engineDifineComponentManager->Initialize();
 	userDefineComponentManager->Initialize();
 
-	GE::GameObject::SetDefineComponentManager(engineDifineComponentManager, userDefineComponentManager);
+	GE::GameFramework::GameObject::SetDefineComponentManager(engineDifineComponentManager, userDefineComponentManager);
 
-	GE::GameObjectManager gameObjectManager;
-	auto gameObject = gameObjectManager.AddGameObject(new GE::GameObject());
+	GE::GameFramework::GameObjectManager gameObjectManager;
+	auto gameObject = gameObjectManager.AddGameObject(new GE::GameFramework::GameObject());
 	gameObject->AddComponent("SampleComponent");
 	gameObject->AddComponent("SampleBehaviour");
 	gameObject->Update(1);
@@ -32,6 +32,5 @@ int main()
 	auto axis = testTransform.GetAxis();
 	testTransform.rotation = GE::Math::Quaternion::Euler(GE::Math::Vector3(90,0,0));
 	axis = testTransform.GetAxis();
-
 	return 0;
 }

@@ -1,24 +1,24 @@
 #include "..\..\..\Header\GameFramework\Component\Component.h"
 #include "..\..\..\Header\GameFramework\GameObject\GameObject.h"
 
-GE::Component::Component()
+GE::GameFramework::Component::Component()
 	: name("Component")
 	, gameObject(nullptr)
 	, isEnable(true)
 {
 }
 
-const GE::GameObject* GE::Component::GetGameObject()
+const GE::GameFramework::GameObject* GE::GameFramework::Component::GetGameObject()
 {
 	return gameObject;
 }
 
-bool GE::Component::IsEnabled()
+bool GE::GameFramework::Component::IsEnabled()
 {
 	return isEnable;
 }
 
-void GE::Component::SetGameObject(GameObject* setObject)
+void GE::GameFramework::Component::SetGameObject(GameObject* setObject)
 {
 	gameObject = setObject;
 	transform = gameObject->GetTransform();

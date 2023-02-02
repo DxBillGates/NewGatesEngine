@@ -3,15 +3,18 @@
 
 namespace GE
 {
-	class EngineDefineComponentManager : public DefineComponentManager
+	namespace GameFramework
 	{
-	public:
-		static DefineComponentManager* GetInstance();
-		void Initialize() override;
-	private:
-		EngineDefineComponentManager();
-		EngineDefineComponentManager(const EngineDefineComponentManager&) = delete;
-		~EngineDefineComponentManager() = default;
-		EngineDefineComponentManager& operator=(const EngineDefineComponentManager&) = delete;
-	};
+		class EngineDefineComponentManager : public DefineComponentManager
+		{
+		public:
+			static DefineComponentManager* GetInstance();
+			void Initialize() override;
+		private:
+			EngineDefineComponentManager();
+			EngineDefineComponentManager(const EngineDefineComponentManager&) = delete;
+			~EngineDefineComponentManager() = default;
+			EngineDefineComponentManager& operator=(const EngineDefineComponentManager&) = delete;
+		};
+	}
 }

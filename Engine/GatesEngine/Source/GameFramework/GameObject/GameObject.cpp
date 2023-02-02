@@ -1,10 +1,10 @@
 #include "..\..\..\Header\GameFramework\GameObject\GameObject.h"
 #include "..\..\..\Header\GameFramework\Component\Component.h"
 
-GE::DefineComponentManager* GE::GameObject::engineDefineComponentManager = nullptr;
-GE::DefineComponentManager* GE::GameObject::userDefineComponentManager = nullptr;
+GE::GameFramework::DefineComponentManager* GE::GameFramework::GameObject::engineDefineComponentManager = nullptr;
+GE::GameFramework::DefineComponentManager* GE::GameFramework::GameObject::userDefineComponentManager = nullptr;
 
-GE::GameObject::GameObject(const std::string& name, const std::string& tag)
+GE::GameFramework::GameObject::GameObject(const std::string& name, const std::string& tag)
 	: gameObjectManager(nullptr)
 	, name(name)
 	, tag(tag)
@@ -13,7 +13,7 @@ GE::GameObject::GameObject(const std::string& name, const std::string& tag)
 {
 }
 
-GE::GameObject::~GameObject()
+GE::GameFramework::GameObject::~GameObject()
 {
 	for (auto& component : components)
 	{
@@ -25,7 +25,7 @@ GE::GameObject::~GameObject()
 	}
 }
 
-void GE::GameObject::Awake()
+void GE::GameFramework::GameObject::Awake()
 {
 	for (auto& component : components)
 	{
@@ -37,7 +37,7 @@ void GE::GameObject::Awake()
 	}
 }
 
-void GE::GameObject::Start()
+void GE::GameFramework::GameObject::Start()
 {
 	for (auto& component : components)
 	{
@@ -49,7 +49,7 @@ void GE::GameObject::Start()
 	}
 }
 
-void GE::GameObject::Update(float deltaTime)
+void GE::GameFramework::GameObject::Update(float deltaTime)
 {
 	for (auto& component : components)
 	{
@@ -63,7 +63,7 @@ void GE::GameObject::Update(float deltaTime)
 	}
 }
 
-void GE::GameObject::Draw()
+void GE::GameFramework::GameObject::Draw()
 {
 	for (auto& component : components)
 	{
@@ -77,7 +77,7 @@ void GE::GameObject::Draw()
 	}
 }
 
-void GE::GameObject::LateDraw()
+void GE::GameFramework::GameObject::LateDraw()
 {
 	for (auto& component : components)
 	{
@@ -91,7 +91,7 @@ void GE::GameObject::LateDraw()
 	}
 }
 
-void GE::GameObject::OnCollision(GameObject* other, bool enter, bool stay, bool exit)
+void GE::GameFramework::GameObject::OnCollision(GameObject* other, bool enter, bool stay, bool exit)
 {
 	for (auto& behaviour : scriptComponents)
 	{
@@ -101,37 +101,37 @@ void GE::GameObject::OnCollision(GameObject* other, bool enter, bool stay, bool 
 	}
 }
 
-GE::IGameObjectManager* GE::GameObject::GetManager()
+GE::GameFramework::IGameObjectManager* GE::GameFramework::GameObject::GetManager()
 {
 	return gameObjectManager;
 }
 
-const std::string& GE::GameObject::GetName()
+const std::string& GE::GameFramework::GameObject::GetName()
 {
 	return name;
 }
 
-const std::string& GE::GameObject::GetTag()
+const std::string& GE::GameFramework::GameObject::GetTag()
 {
 	return tag;
 }
 
-const std::string& GE::GameObject::GetLayer()
+const std::string& GE::GameFramework::GameObject::GetLayer()
 {
 	return layer;
 }
 
-void GE::GameObject::SetManager(IGameObjectManager* manager)
+void GE::GameFramework::GameObject::SetManager(IGameObjectManager* manager)
 {
 	gameObjectManager = manager;
 }
 
-void GE::GameObject::SetName(const std::string& setName)
+void GE::GameFramework::GameObject::SetName(const std::string& setName)
 {
 	name = setName;
 }
 
-void GE::GameObject::SetTag(const std::string& setTag)
+void GE::GameFramework::GameObject::SetTag(const std::string& setTag)
 {
 	std::string beforeTag = tag;
 	tag = setTag;
@@ -140,17 +140,17 @@ void GE::GameObject::SetTag(const std::string& setTag)
 	gameObjectManager->ResetTagGameObject(this, beforeTag);
 }
 
-void GE::GameObject::SetLayer(const std::string& setLayer)
+void GE::GameFramework::GameObject::SetLayer(const std::string& setLayer)
 {
 	layer = setLayer;
 }
 
-void GE::GameObject::SetEnabled(bool flag)
+void GE::GameFramework::GameObject::SetEnabled(bool flag)
 {
 	isEnable = flag;
 }
 
-GE::Component* GE::GameObject::AddComponent(const std::string& componentName)
+GE::GameFramework::Component* GE::GameFramework::GameObject::AddComponent(const std::string& componentName)
 {
 	if (engineDefineComponentManager == nullptr || userDefineComponentManager == nullptr)return nullptr;
 
@@ -176,7 +176,7 @@ GE::Component* GE::GameObject::AddComponent(const std::string& componentName)
 	return component;
 }
 
-void GE::GameObject::OnDestroy()
+void GE::GameFramework::GameObject::OnDestroy()
 {
 	for (auto& component : components)
 	{
@@ -188,7 +188,7 @@ void GE::GameObject::OnDestroy()
 	}
 }
 
-void GE::GameObject::OnSerialize()
+void GE::GameFramework::GameObject::OnSerialize()
 {
 	for (auto& component : components)
 	{
@@ -200,28 +200,28 @@ void GE::GameObject::OnSerialize()
 	}
 }
 
-bool GE::GameObject::IsEnabled()
+bool GE::GameFramework::GameObject::IsEnabled()
 {
 	return isEnable;
 }
 
-bool GE::GameObject::IsDestroy()
+bool GE::GameFramework::GameObject::IsDestroy()
 {
 	return isDestroy;
 }
 
-GE::Math::Transform* GE::GameObject::GetTransform()
+GE::Math::Transform* GE::GameFramework::GameObject::GetTransform()
 {
 	return &transform;
 }
 
-void GE::GameObject::Destroy()
+void GE::GameFramework::GameObject::Destroy()
 {
 	isDestroy = true;
 	gameObjectManager->DestroyGameObject(this);
 }
 
-void GE::GameObject::SetDefineComponentManager(DefineComponentManager* engineDefine, DefineComponentManager* userDefine)
+void GE::GameFramework::GameObject::SetDefineComponentManager(DefineComponentManager* engineDefine, DefineComponentManager* userDefine)
 {
 	engineDefineComponentManager = engineDefine;
 	userDefineComponentManager = userDefine;

@@ -1,6 +1,6 @@
 #include "..\..\..\Header\GameFramework\GameObject\GameObjectManager.h"
 
-void GE::GameObjectManager::Destroy()
+void GE::GameFramework::GameObjectManager::Destroy()
 {
 	if (destroyGameObjects.size() == 0)return;
 
@@ -37,7 +37,7 @@ void GE::GameObjectManager::Destroy()
 	destroyGameObjects.clear();
 }
 
-void GE::GameObjectManager::ResetTag()
+void GE::GameFramework::GameObjectManager::ResetTag()
 {
 	if (resetTagGameObjects.size() == 0)return;
 
@@ -72,16 +72,16 @@ void GE::GameObjectManager::ResetTag()
 	resetTagGameObjects.clear();
 }
 
-GE::GameObjectManager::GameObjectManager()
+GE::GameFramework::GameObjectManager::GameObjectManager()
 {
 }
 
-GE::GameObjectManager::~GameObjectManager()
+GE::GameFramework::GameObjectManager::~GameObjectManager()
 {
 	DestroyGameObjects();
 }
 
-void GE::GameObjectManager::Awake()
+void GE::GameFramework::GameObjectManager::Awake()
 {
 	for (auto& tagGameObjects : gameObjects)
 	{
@@ -92,7 +92,7 @@ void GE::GameObjectManager::Awake()
 	}
 }
 
-void GE::GameObjectManager::Start()
+void GE::GameFramework::GameObjectManager::Start()
 {
 	// プログラム上（vs上）で追加したゲームオブジェクトに対してタグを再設定している可能性があるから一度配列を更新確認
 	// タグが再設定されていた際に一度配列を更新する
@@ -106,7 +106,7 @@ void GE::GameObjectManager::Start()
 	}
 }
 
-void GE::GameObjectManager::Update(float deltaTime)
+void GE::GameFramework::GameObjectManager::Update(float deltaTime)
 {
 	// タグが再設定されていた際に一度配列を更新する
 	ResetTag();
@@ -122,7 +122,7 @@ void GE::GameObjectManager::Update(float deltaTime)
 	}
 }
 
-void GE::GameObjectManager::Draw()
+void GE::GameFramework::GameObjectManager::Draw()
 {
 	for (auto& tagGameObjects : gameObjects)
 	{
@@ -133,7 +133,7 @@ void GE::GameObjectManager::Draw()
 	}
 }
 
-void GE::GameObjectManager::LateDraw()
+void GE::GameFramework::GameObjectManager::LateDraw()
 {
 	for (auto& tagGameObjects : gameObjects)
 	{
@@ -144,12 +144,12 @@ void GE::GameObjectManager::LateDraw()
 	}
 }
 
-std::vector<GE::GameObject*>& GE::GameObjectManager::GetGameObjects(const std::string& tag)
+std::vector<GE::GameFramework::GameObject*>& GE::GameFramework::GameObjectManager::GetGameObjects(const std::string& tag)
 {
 	return gameObjects[tag];
 }
 
-GE::GameObject* GE::GameObjectManager::AddGameObject(GameObject* newGameObject)
+GE::GameFramework::GameObject* GE::GameFramework::GameObjectManager::AddGameObject(GameObject* newGameObject)
 {
 	if (newGameObject == nullptr)return nullptr;
 
@@ -158,7 +158,7 @@ GE::GameObject* GE::GameObjectManager::AddGameObject(GameObject* newGameObject)
 	return newGameObject;
 }
 
-GE::GameObject* GE::GameObjectManager::FindGameObject(const std::string& name)
+GE::GameFramework::GameObject* GE::GameFramework::GameObjectManager::FindGameObject(const std::string& name)
 {
 	for (auto& tagGameObjects : gameObjects)
 	{
@@ -171,7 +171,7 @@ GE::GameObject* GE::GameObjectManager::FindGameObject(const std::string& name)
 	return nullptr;
 }
 
-GE::GameObject* GE::GameObjectManager::FindGameObject(const std::string& name, const std::string& tag)
+GE::GameFramework::GameObject* GE::GameFramework::GameObjectManager::FindGameObject(const std::string& name, const std::string& tag)
 {
 	// そのタグがそもそも登録されていないから即リターン
 	if (gameObjects.find(tag) == gameObjects.end())return nullptr;
@@ -184,35 +184,35 @@ GE::GameObject* GE::GameObjectManager::FindGameObject(const std::string& name, c
 	return nullptr;
 }
 
-void GE::GameObjectManager::ResetTagGameObject(GameObject* gameObject, const std::string& beforeTag)
+void GE::GameFramework::GameObjectManager::ResetTagGameObject(GameObject* gameObject, const std::string& beforeTag)
 {
 	if (gameObject == nullptr)return;
 	// 再設定前のタグで登録
 	resetTagGameObjects[beforeTag].push_back(gameObject);
 }
 
-void GE::GameObjectManager::DestroyGameObject(const std::string& name)
+void GE::GameFramework::GameObjectManager::DestroyGameObject(const std::string& name)
 {
 	GameObject* gameObject = FindGameObject(name);
 	if (gameObject == nullptr)return;
 	DestroyGameObject(gameObject);
 }
 
-void GE::GameObjectManager::DestroyGameObject(const std::string& name, const std::string& tag)
+void GE::GameFramework::GameObjectManager::DestroyGameObject(const std::string& name, const std::string& tag)
 {
 	GameObject* gameObject = FindGameObject(name,tag);
 	if (gameObject == nullptr)return;
 	DestroyGameObject(gameObject);
 }
 
-void GE::GameObjectManager::DestroyGameObject(GameObject* gameObject)
+void GE::GameFramework::GameObjectManager::DestroyGameObject(GameObject* gameObject)
 {
 	if (gameObject == nullptr)return;
 
 	destroyGameObjects[gameObject->GetTag()].emplace_back(gameObject);
 }
 
-void GE::GameObjectManager::DestroyGameObjects()
+void GE::GameFramework::GameObjectManager::DestroyGameObjects()
 {
 	for (auto& tagGameObjects : gameObjects)
 	{
