@@ -133,7 +133,11 @@ void GE::GameObject::SetName(const std::string& setName)
 
 void GE::GameObject::SetTag(const std::string& setTag)
 {
+	std::string beforeTag = tag;
 	tag = setTag;
+
+	if (gameObjectManager == nullptr)return;
+	gameObjectManager->ResetTagGameObject(this, beforeTag);
 }
 
 void GE::GameObject::SetLayer(const std::string& setLayer)

@@ -1,8 +1,8 @@
 #pragma once
+#include "IGameObjectManager.h"
 #include "..\Component\Component.h"
 #include "..\Component\Behaviour.h"
 #include "..\Component\DefineComponentManager.h"
-#include "IGameObjectManager.h"
 #include "..\..\Util\Math\Transform.h"
 #include <vector>
 

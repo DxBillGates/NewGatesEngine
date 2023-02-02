@@ -22,11 +22,12 @@ void GE::GameObjectManager::Destroy()
 					//	inspectorGui.SetCurrentSelectGameObject(nullptr);
 					//}
 
+					std::swap(gameObject, gameObjects[tag].back());
+					gameObjects[tag].pop_back();
+
 					gameObject->OnDestroy();
 					delete gameObject;
 					gameObject = nullptr;
-					std::swap(gameObject, gameObjects[tag].back());
-					gameObjects[tag].pop_back();
 					break;
 				}
 			}
@@ -34,6 +35,41 @@ void GE::GameObjectManager::Destroy()
 		destroyTagObjects.second.clear();
 	}
 	destroyGameObjects.clear();
+}
+
+void GE::GameObjectManager::ResetTag()
+{
+	if (resetTagGameObjects.size() == 0)return;
+
+	// 登録されているタグを走査
+	for (auto& resetTagObjects : resetTagGameObjects)
+	{
+		// そのタグで登録されている配列を更新する
+		for (auto& resetTagObject : resetTagObjects.second)
+		{
+			// 再設定前のタグ
+			std::string beforeTag = resetTagObjects.first;
+			// もとの配列から削除していく
+			for (auto& gameObject : gameObjects[beforeTag])
+			{
+				if (resetTagObject == gameObject)
+				{
+					// もとのタグ配列から登録を解除
+					std::swap(gameObject, gameObjects[beforeTag].back());
+					gameObjects[beforeTag].pop_back();
+
+					// 新しく設定されたタグとゲームオブジェクトたちを管理している配列に追加する
+					// 再設定後のタグ
+					std::string currentTag = gameObject->GetTag();
+					gameObjects[currentTag].push_back(gameObject);
+
+					break;
+				}
+			}
+		}
+		resetTagObjects.second.clear();
+	}
+	resetTagGameObjects.clear();
 }
 
 GE::GameObjectManager::GameObjectManager()
@@ -58,6 +94,9 @@ void GE::GameObjectManager::Awake()
 
 void GE::GameObjectManager::Start()
 {
+	// プログラム上（vs上）で追加したゲームオブジェクトに対してタグを再設定している可能性があるから一度配列を更新確認
+	// タグが再設定されていた際に一度配列を更新する
+	ResetTag();
 	for (auto& tagGameObjects : gameObjects)
 	{
 		for (auto& gameObject : tagGameObjects.second)
@@ -69,6 +108,8 @@ void GE::GameObjectManager::Start()
 
 void GE::GameObjectManager::Update(float deltaTime)
 {
+	// タグが再設定されていた際に一度配列を更新する
+	ResetTag();
 	// 削除予定のゲームオブジェクトを削除
 	Destroy();
 
@@ -141,6 +182,13 @@ GE::GameObject* GE::GameObjectManager::FindGameObject(const std::string& name, c
 	}
 
 	return nullptr;
+}
+
+void GE::GameObjectManager::ResetTagGameObject(GameObject* gameObject, const std::string& beforeTag)
+{
+	if (gameObject == nullptr)return;
+	// 再設定前のタグで登録
+	resetTagGameObjects[beforeTag].push_back(gameObject);
 }
 
 void GE::GameObjectManager::DestroyGameObject(const std::string& name)

@@ -11,9 +11,12 @@ namespace GE
 
 		TagGameObjects gameObjects;
 		TagGameObjects destroyGameObjects;
+		TagGameObjects resetTagGameObjects;
 	private:
 		// 削除予定のゲームオブジェクトを削除する
 		void Destroy();
+		// 前フレームにタグが変更されていた場合ゲームオブジェクトとタグを一緒に管理している配列を更新する
+		void ResetTag();
 	public:
 		GameObjectManager();
 		~GameObjectManager();
@@ -31,6 +34,8 @@ namespace GE
 		GameObject* FindGameObject(const std::string& name)override;
 		// 指定した名前とタグのゲームオブジェクトを返す
 		GameObject* FindGameObject(const std::string& name, const std::string& tag)override;
+		// 指定したゲームオブジェクトとそのタグを一緒に管理している配列を次のフレーム開始時に更新する
+		void ResetTagGameObject(GameObject* gameObject, const std::string& beforeTag)override;
 		// 指定した名前のゲームオブジェクトを次のフレーム開始時に削除する
 		void DestroyGameObject(const std::string& name)override;
 		// 指定した名前とタグのゲームオブジェクトを次のフレーム開始時に削除する

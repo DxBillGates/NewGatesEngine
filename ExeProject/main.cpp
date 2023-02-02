@@ -25,6 +25,9 @@ int main()
 	gameObject->AddComponent("SampleBehaviour");
 	gameObject->Update(1);
 
+	gameObjectManager.Start();
+	gameObjectManager.Update(0);
+
 	GE::Math::Transform testTransform;
 	auto axis = testTransform.GetAxis();
 	testTransform.rotation = GE::Math::Quaternion::Euler(GE::Math::Vector3(90,0,0));
