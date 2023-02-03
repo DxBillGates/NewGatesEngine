@@ -23,6 +23,7 @@ namespace GE
 			virtual void Awake() {}
 			virtual void Start() {}
 			virtual void Update(float deltaTime) {}
+			virtual void LateUpdate(float deltaTime) {}
 			virtual void Draw() {}
 			virtual void LateDraw() {}
 

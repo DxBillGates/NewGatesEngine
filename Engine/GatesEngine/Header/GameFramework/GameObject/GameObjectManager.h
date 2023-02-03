@@ -26,8 +26,9 @@ namespace GE
 			void Awake();
 			void Start();
 			void Update(float deltaTime);
+			void LateUpdate(float deltaTime);
 			void Draw();
-			void LateDraw();
+			//void LateDraw();
 
 			// 指定したタグとして登録されているゲームオブジェクトの配列を返す
 			std::vector<GameObject*>& GetGameObjects(const std::string& tag)override;

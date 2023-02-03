@@ -63,6 +63,20 @@ void GE::GameFramework::GameObject::Update(float deltaTime)
 	}
 }
 
+void GE::GameFramework::GameObject::LateUpdate(float deltaTime)
+{
+	for (auto& component : components)
+	{
+		if (component->IsEnabled() == false)continue;
+		component->LateUpdate(deltaTime);
+	}
+	for (auto& behaviour : scriptComponents)
+	{
+		if (behaviour->IsEnabled() == false)continue;
+		behaviour->LateUpdate(deltaTime);
+	}
+}
+
 void GE::GameFramework::GameObject::Draw()
 {
 	for (auto& component : components)

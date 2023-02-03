@@ -122,6 +122,17 @@ void GE::GameFramework::GameObjectManager::Update(float deltaTime)
 	}
 }
 
+void GE::GameFramework::GameObjectManager::LateUpdate(float deltaTime)
+{
+	for (auto& tagGameObjects : gameObjects)
+	{
+		for (auto& gameObject : tagGameObjects.second)
+		{
+			gameObject->LateUpdate(deltaTime);
+		}
+	}
+}
+
 void GE::GameFramework::GameObjectManager::Draw()
 {
 	for (auto& tagGameObjects : gameObjects)
@@ -129,20 +140,21 @@ void GE::GameFramework::GameObjectManager::Draw()
 		for (auto& gameObject : tagGameObjects.second)
 		{
 			gameObject->Draw();
-		}
-	}
-}
-
-void GE::GameFramework::GameObjectManager::LateDraw()
-{
-	for (auto& tagGameObjects : gameObjects)
-	{
-		for (auto& gameObject : tagGameObjects.second)
-		{
 			gameObject->LateDraw();
 		}
 	}
 }
+
+//void GE::GameFramework::GameObjectManager::LateDraw()
+//{
+//	for (auto& tagGameObjects : gameObjects)
+//	{
+//		for (auto& gameObject : tagGameObjects.second)
+//		{
+//			gameObject->LateDraw();
+//		}
+//	}
+//}
 
 std::vector<GE::GameFramework::GameObject*>& GE::GameFramework::GameObjectManager::GetGameObjects(const std::string& tag)
 {
