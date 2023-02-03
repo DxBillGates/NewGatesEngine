@@ -19,6 +19,7 @@ namespace GE
 			void Destroy();
 			// 前フレームにタグが変更されていた場合ゲームオブジェクトとタグを一緒に管理している配列を更新する
 			void ResetTag();
+			void LateUpdate(float deltaTime);
 		public:
 			GameObjectManager();
 			~GameObjectManager();
@@ -26,9 +27,8 @@ namespace GE
 			void Awake();
 			void Start();
 			void Update(float deltaTime);
-			void LateUpdate(float deltaTime);
 			void Draw();
-			//void LateDraw();
+			void LateDraw();
 
 			// 指定したタグとして登録されているゲームオブジェクトの配列を返す
 			std::vector<GameObject*>& GetGameObjects(const std::string& tag)override;

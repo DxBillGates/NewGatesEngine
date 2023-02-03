@@ -94,6 +94,8 @@ void GE::GameFramework::GameObjectManager::Awake()
 
 void GE::GameFramework::GameObjectManager::Start()
 {
+	Awake();
+
 	// プログラム上（vs上）で追加したゲームオブジェクトに対してタグを再設定している可能性があるから一度配列を更新確認
 	// タグが再設定されていた際に一度配列を更新する
 	ResetTag();
@@ -120,6 +122,8 @@ void GE::GameFramework::GameObjectManager::Update(float deltaTime)
 			gameObject->Update(deltaTime);
 		}
 	}
+
+	LateUpdate(deltaTime);
 }
 
 void GE::GameFramework::GameObjectManager::LateUpdate(float deltaTime)
@@ -140,21 +144,20 @@ void GE::GameFramework::GameObjectManager::Draw()
 		for (auto& gameObject : tagGameObjects.second)
 		{
 			gameObject->Draw();
-			gameObject->LateDraw();
 		}
 	}
 }
 
-//void GE::GameFramework::GameObjectManager::LateDraw()
-//{
-//	for (auto& tagGameObjects : gameObjects)
-//	{
-//		for (auto& gameObject : tagGameObjects.second)
-//		{
-//			gameObject->LateDraw();
-//		}
-//	}
-//}
+void GE::GameFramework::GameObjectManager::LateDraw()
+{
+	for (auto& tagGameObjects : gameObjects)
+	{
+		for (auto& gameObject : tagGameObjects.second)
+		{
+			gameObject->LateDraw();
+		}
+	}
+}
 
 std::vector<GE::GameFramework::GameObject*>& GE::GameFramework::GameObjectManager::GetGameObjects(const std::string& tag)
 {
