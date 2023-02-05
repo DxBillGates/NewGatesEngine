@@ -11,7 +11,9 @@ namespace GE
 		private:
 			using TagGameObjects = std::map<std::string, std::vector<GameObject*>>;
 
-			TagGameObjects gameObjects;
+			TagGameObjects managedTagGameObjects;
+			std::vector<GameObject*> gameObjects;
+
 			int destroyGameObjectCount;
 		private:
 			// 削除予定のゲームオブジェクトを削除する
