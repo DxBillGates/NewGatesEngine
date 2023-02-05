@@ -95,9 +95,9 @@ void GE::GameFramework::GameObjectManager::LateDraw()
 	}
 }
 
-std::vector<GE::GameFramework::GameObject*>& GE::GameFramework::GameObjectManager::GetGameObjects(const std::string& tag)
+const std::vector<GE::GameFramework::GameObject*>* GE::GameFramework::GameObjectManager::GetGameObjects(const std::string& tag)
 {
-	return managedTagGameObjects[tag];
+	return &managedTagGameObjects[tag];
 }
 
 GE::GameFramework::GameObject* GE::GameFramework::GameObjectManager::AddGameObject(GameObject* newGameObject)

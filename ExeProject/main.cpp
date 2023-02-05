@@ -25,6 +25,7 @@ int main()
 	auto gameObject = gameObjectManager.AddGameObject(new GE::GameFramework::GameObject());
 	gameObject->AddComponent("SampleComponent");
 	gameObject->AddComponent("SampleBehaviour");
+
 	gameObject->SetTag("aa");
 
 	gameObject = gameObjectManager.AddGameObject(new GE::GameFramework::GameObject());

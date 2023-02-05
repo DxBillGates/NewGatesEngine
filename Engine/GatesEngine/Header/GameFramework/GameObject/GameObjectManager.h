@@ -30,7 +30,7 @@ namespace GE
 			void LateDraw();
 
 			// 指定したタグとして登録されているゲームオブジェクトの配列を返す
-			std::vector<GameObject*>& GetGameObjects(const std::string& tag)override;
+			const std::vector<GameObject*>* GetGameObjects(const std::string& tag)override;
 			GameObject* AddGameObject(GameObject* newGameObject)override;
 			// 指定した名前のゲームオブジェクトを返す
 			GameObject* FindGameObject(const std::string& name)override;

@@ -12,7 +12,7 @@ namespace GE
 		{
 		public:
 			// 指定したタグとして登録されているゲームオブジェクトの配列を返す
-			virtual std::vector<GameObject*>& GetGameObjects(const std::string& tag) = 0;
+			virtual const std::vector<GameObject*>* GetGameObjects(const std::string& tag) = 0;
 			virtual GameObject* AddGameObject(GameObject* newGameObject) = 0;
 			// 指定した名前のゲームオブジェクトを返す
 			virtual GameObject* FindGameObject(const std::string& name) = 0;
