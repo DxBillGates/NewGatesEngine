@@ -43,15 +43,36 @@
     <Filter Include="Source\Util">
       <UniqueIdentifier>{46433ec9-7fea-4d95-a91d-40022d33af41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header\GameFramework\Scene">
+      <UniqueIdentifier>{91bedc78-bf5b-4343-b8a2-de9625b3d95d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\GameFramework\Scene">
+      <UniqueIdentifier>{127a649a-39a0-413f-be14-04a801a37e5d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\Util\Utility.h">
       <Filter>Header\Util</Filter>
     </ClInclude>
+    <ClInclude Include="Header\GameFramework\Scene\Scene.h">
+      <Filter>Header\GameFramework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Scene\IScene.h">
+      <Filter>Header\GameFramework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Header\GameFramework\Scene\SceneManager.h">
+      <Filter>Header\GameFramework\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Util\Utility.cpp">
       <Filter>Source\Util</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\Scene\Scene.cpp">
+      <Filter>Source\GameFramework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameFramework\Scene\SceneManager.cpp">
+      <Filter>Source\GameFramework\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

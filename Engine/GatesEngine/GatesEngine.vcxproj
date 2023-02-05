@@ -19,9 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\GameFramework\Scene\IScene.h" />
+    <ClInclude Include="Header\GameFramework\Scene\Scene.h" />
+    <ClInclude Include="Header\GameFramework\Scene\SceneManager.h" />
     <ClInclude Include="Header\Util\Utility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\GameFramework\Scene\Scene.cpp" />
+    <ClCompile Include="Source\GameFramework\Scene\SceneManager.cpp" />
     <ClCompile Include="Source\Util\Utility.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -93,6 +98,9 @@
     <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\Bin\$(Configuration)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(ProjectDir)External</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnabled>false</VcpkgEnabled>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
