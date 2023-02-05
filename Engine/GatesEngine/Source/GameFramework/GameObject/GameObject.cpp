@@ -200,6 +200,8 @@ void GE::GameFramework::GameObject::OnDestroy()
 	{
 		behaviour->OnDestroy();
 	}
+
+	delete this;
 }
 
 void GE::GameFramework::GameObject::OnSerialize()

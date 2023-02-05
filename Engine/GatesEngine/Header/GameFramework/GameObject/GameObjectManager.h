@@ -12,19 +12,16 @@ namespace GE
 			using TagGameObjects = std::map<std::string, std::vector<GameObject*>>;
 
 			TagGameObjects gameObjects;
-			TagGameObjects destroyGameObjects;
-			TagGameObjects resetTagGameObjects;
+			int destroyGameObjectCount;
 		private:
 			// 削除予定のゲームオブジェクトを削除する
 			void Destroy();
-			// 前フレームにタグが変更されていた場合ゲームオブジェクトとタグを一緒に管理している配列を更新する
-			void ResetTag();
+			void Awake();
 			void LateUpdate(float deltaTime);
 		public:
 			GameObjectManager();
 			~GameObjectManager();
 
-			void Awake();
 			void Start();
 			void Update(float deltaTime);
 			void Draw();

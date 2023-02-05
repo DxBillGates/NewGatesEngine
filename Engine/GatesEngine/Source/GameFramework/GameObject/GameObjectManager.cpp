@@ -2,77 +2,25 @@
 
 void GE::GameFramework::GameObjectManager::Destroy()
 {
-	if (destroyGameObjects.size() == 0)return;
+	if (destroyGameObjectCount == 0)return;
 
-	// 登録されているタグを走査
-	for (auto& destroyTagObjects : destroyGameObjects)
+	// 登録されているタグを走査&削除
+	for (auto& destroyTagObjects : gameObjects)
 	{
-		// そのタグで登録されているゲームオブジェクトを削除していく
-		for (auto& destroyObject : destroyTagObjects.second)
-		{
-			std::string tag = destroyTagObjects.first;
-
-			// もとの配列から削除していく
-			for (auto& gameObject : gameObjects[tag])
+		auto removeIfResult = std::remove_if(destroyTagObjects.second.begin(), destroyTagObjects.second.end(), [](GameObject* object)
 			{
-				if (destroyObject == gameObject)
-				{
-					//if (gameObject == inspectorGui.CurrentSelectGameObject())
-					//{
-					//	inspectorGui.SetCurrentSelectGameObject(nullptr);
-					//}
-
-					std::swap(gameObject, gameObjects[tag].back());
-					gameObjects[tag].pop_back();
-
-					gameObject->OnDestroy();
-					delete gameObject;
-					gameObject = nullptr;
-					break;
-				}
-			}
-		}
-		destroyTagObjects.second.clear();
+				bool isDestroy = object->IsDestroy();
+				if (isDestroy)object->OnDestroy();
+				return isDestroy;
+			});
+		destroyTagObjects.second.erase(removeIfResult, destroyTagObjects.second.end());
 	}
-	destroyGameObjects.clear();
-}
 
-void GE::GameFramework::GameObjectManager::ResetTag()
-{
-	if (resetTagGameObjects.size() == 0)return;
-
-	// 登録されているタグを走査
-	for (auto& resetTagObjects : resetTagGameObjects)
-	{
-		// そのタグで登録されている配列を更新する
-		for (auto& resetTagObject : resetTagObjects.second)
-		{
-			// 再設定前のタグ
-			std::string beforeTag = resetTagObjects.first;
-			// もとの配列から削除していく
-			for (auto& gameObject : gameObjects[beforeTag])
-			{
-				if (resetTagObject == gameObject)
-				{
-					// もとのタグ配列から登録を解除
-					std::swap(gameObject, gameObjects[beforeTag].back());
-					gameObjects[beforeTag].pop_back();
-
-					// 新しく設定されたタグとゲームオブジェクトたちを管理している配列に追加する
-					// 再設定後のタグ
-					std::string currentTag = gameObject->GetTag();
-					gameObjects[currentTag].push_back(gameObject);
-
-					break;
-				}
-			}
-		}
-		resetTagObjects.second.clear();
-	}
-	resetTagGameObjects.clear();
+	destroyGameObjectCount = 0;
 }
 
 GE::GameFramework::GameObjectManager::GameObjectManager()
+	: destroyGameObjectCount(0)
 {
 }
 
@@ -96,9 +44,6 @@ void GE::GameFramework::GameObjectManager::Start()
 {
 	Awake();
 
-	// プログラム上（vs上）で追加したゲームオブジェクトに対してタグを再設定している可能性があるから一度配列を更新確認
-	// タグが再設定されていた際に一度配列を更新する
-	ResetTag();
 	for (auto& tagGameObjects : gameObjects)
 	{
 		for (auto& gameObject : tagGameObjects.second)
@@ -110,8 +55,6 @@ void GE::GameFramework::GameObjectManager::Start()
 
 void GE::GameFramework::GameObjectManager::Update(float deltaTime)
 {
-	// タグが再設定されていた際に一度配列を更新する
-	ResetTag();
 	// 削除予定のゲームオブジェクトを削除
 	Destroy();
 
@@ -202,8 +145,19 @@ GE::GameFramework::GameObject* GE::GameFramework::GameObjectManager::FindGameObj
 void GE::GameFramework::GameObjectManager::ResetTagGameObject(GameObject* gameObject, const std::string& beforeTag)
 {
 	if (gameObject == nullptr)return;
-	// 再設定前のタグで登録
-	resetTagGameObjects[beforeTag].push_back(gameObject);
+
+	for (auto& tagGameObject : gameObjects[beforeTag])
+	{
+		if (tagGameObject == gameObject)
+		{
+			// 再設定前のタグで登録
+			std::swap(tagGameObject, gameObjects[beforeTag].back());
+			gameObjects[beforeTag].pop_back();
+			break;
+		}
+	}
+
+	gameObjects[gameObject->GetTag()].push_back(gameObject);
 }
 
 void GE::GameFramework::GameObjectManager::DestroyGameObject(const std::string& name)
@@ -215,7 +169,7 @@ void GE::GameFramework::GameObjectManager::DestroyGameObject(const std::string& 
 
 void GE::GameFramework::GameObjectManager::DestroyGameObject(const std::string& name, const std::string& tag)
 {
-	GameObject* gameObject = FindGameObject(name,tag);
+	GameObject* gameObject = FindGameObject(name, tag);
 	if (gameObject == nullptr)return;
 	DestroyGameObject(gameObject);
 }
@@ -224,18 +178,20 @@ void GE::GameFramework::GameObjectManager::DestroyGameObject(GameObject* gameObj
 {
 	if (gameObject == nullptr)return;
 
-	destroyGameObjects[gameObject->GetTag()].emplace_back(gameObject);
+	// 次のフレーム開始時に削除予定のオブジェクトの数を増やす
+	++destroyGameObjectCount;
 }
 
 void GE::GameFramework::GameObjectManager::DestroyGameObjects()
 {
 	for (auto& tagGameObjects : gameObjects)
 	{
-		for (auto& tagGameObject : tagGameObjects.second)
+		// すべての要素を削除させるから++itはいらない
+		// eraseで次のitを取得できるから
+		for (auto it = tagGameObjects.second.begin(); it != tagGameObjects.second.end();)
 		{
-			DestroyGameObject(tagGameObject);
+			(*it)->OnDestroy();
+			it = tagGameObjects.second.erase(it);
 		}
 	}
-
-	Destroy();
 }

@@ -5,6 +5,7 @@
 #include <GatesEngine/Header/GameFramework/GameObject/GameObject.h>
 #include <GatesEngine/Header/GameFramework/GameObject/GameObjectManager.h>
 #include <GatesEngine/Header/Util/Math/Transform.h>
+#include <GatesEngine/Header/Util/Random.h>
 #include <GatesEngine/Header/Util/Timer.h>
 
 #include "UserDefineComponentManager.h"
@@ -20,17 +21,17 @@ int main()
 	GE::GameFramework::GameObject::SetDefineComponentManager(engineDifineComponentManager, userDefineComponentManager);
 
 	GE::GameFramework::GameObjectManager gameObjectManager;
+
 	auto gameObject = gameObjectManager.AddGameObject(new GE::GameFramework::GameObject());
 	gameObject->AddComponent("SampleComponent");
 	gameObject->AddComponent("SampleBehaviour");
-	gameObject->Update(1);
+	gameObject->SetTag("aa");
 
 	gameObjectManager.Start();
 	gameObjectManager.Update(0);
+	gameObjectManager.Draw();
+	gameObjectManager.LateDraw();
+	gameObjectManager.DestroyGameObjects();
 
-	GE::Math::Transform testTransform;
-	auto axis = testTransform.GetAxis();
-	testTransform.rotation = GE::Math::Quaternion::Euler(GE::Math::Vector3(90,0,0));
-	axis = testTransform.GetAxis();
 	return 0;
 }
