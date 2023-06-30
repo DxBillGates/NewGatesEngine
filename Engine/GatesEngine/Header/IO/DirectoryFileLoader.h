@@ -12,7 +12,7 @@ namespace GE
 		private:
 			std::string directoryPath;
 		public:
-			/// <param name="directoryPath">相対パスでフォルダ名(例:resources,texture)、スラッシュはつけない</param>
+			/// <param name="directoryPath">パスを指定(例:resources,texture)、スラッシュはつけない</param>
 			DirectoryFileLoader(const std::string& directoryPath);
 
 			/// <summary>

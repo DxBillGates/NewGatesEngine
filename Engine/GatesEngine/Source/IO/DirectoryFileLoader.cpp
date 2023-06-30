@@ -29,6 +29,7 @@ void GE::IO::DirectoryFileLoader::GetFilepaths(const std::string& extension, std
 	// 引数のfilenamesに取得したファイルパスを追加していくラムダ
 	auto PushbackFilepath = [&filenames](WIN32_FIND_DATA& data,const std::string& directory)
 	{
+		// 本当はstringのデータサイズをリサーブしたほうがいい
 		std::string filename = data.cFileName;
 		filename.insert(0, directory.c_str());
 		filenames.emplace_back(filename);
