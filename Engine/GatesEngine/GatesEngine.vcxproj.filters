@@ -146,17 +146,11 @@
     <ClCompile Include="Source\GameFramework\Component\Component.cpp">
       <Filter>Source\GameFramework\Component</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameFramework\Component\EngineDefineComponentManager.cpp">
-      <Filter>Source\GameFramework\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GameFramework\Component\SampleBehaviour.cpp">
       <Filter>Source\GameFramework\Component\Sample</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameFramework\Component\SampleComponent.cpp">
       <Filter>Source\GameFramework\Component\Sample</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GameFramework\Component\DefineComponentManager.cpp">
-      <Filter>Source\GameFramework\Component</Filter>
     </ClCompile>
     <ClCompile Include="Source\Util\Math\Vector2.cpp">
       <Filter>Source\Util\Math</Filter>

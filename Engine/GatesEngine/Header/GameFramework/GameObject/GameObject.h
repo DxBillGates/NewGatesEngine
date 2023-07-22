@@ -2,7 +2,6 @@
 #include "IGameObjectManager.h"
 #include "..\Component\Component.h"
 #include "..\Component\Behaviour.h"
-#include "..\Component\DefineComponentManager.h"
 #include "..\..\Util\Math\Transform.h"
 #include <vector>
 
@@ -25,9 +24,6 @@ namespace GE
 
 			std::vector<Component*> components;
 			std::vector<Behaviour*> scriptComponents;
-
-			static DefineComponentManager* engineDefineComponentManager;
-			static DefineComponentManager* userDefineComponentManager;
 		public:
 			GameObject(const std::string& name = "unknown", const std::string& tag = "none");
 			~GameObject();
@@ -70,8 +66,6 @@ namespace GE
 
 			// 次のフレーム開始時に登録されている管理クラスから削除する
 			void Destroy();
-
-			static void SetDefineComponentManager(DefineComponentManager* engineDefine, DefineComponentManager* userDefine);
 		};
 
 		template<typename T>
